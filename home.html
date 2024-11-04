@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Parking Booking</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="page.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1>CAR PARKING MANAGEMENT SYSTEM</h1>
+            <div class="menu">
+                <a href="aboutus.html">About Us</a>
+                <a href="home.html">Booking</a>
+                <a href="profile.html">Profile</a>
+            </div>
+        </div>
+    </header>
+    <div class="image">
+        <h2>Book Your Park</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/5388/5388823.png" alt="Car Banner" style="display:block; margin-left: auto; margin-right: auto; padding-right: 50px;">
+    </div>
+    <section>
+        <br>
+        <br>
+        <h2>Make Your Choices</h2>
+        <div class="container">
+            <form id="parking-form">
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="parking">Select Transport:</label>
+                        <select id="parking" name="parking">
+                            <option value="motorcycle">Motorcycle</option>
+                            <option value="car">Car</option>
+                        </select>
+                    </div>
+                    <div class="form-column">
+                        <label for="date">Select a Date:</label>
+                        <input type="text" id="date" name="date">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="start-time">Select Start Time:</label>
+                        <input type="time" id="start-time" name="start-time">
+                    </div>
+                    <div class="form-column">
+                        <label for="end-time">Select End Time:</label>
+                        <input type="time" id="end-time" name="end-time">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Submit</button>
+                    <input type="reset" value="Reset">
+                </div>
+            </form>
+        </div>
+    </section>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" id="closeButton">×</span>
+            <p id="popup-message">Form submitted successfully!</p>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $("#date").datepicker();
+        });
+
+        document.getElementById('parking-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            var transport = document.getElementById('parking').value;
+            var parkingType = document.getElementById('parking-type').value;
+            var startTime = document.getElementById('start-time').value;
+            var endTime = document.getElementById('end-time').value;
+
+            // Calculate time difference in hours
+            var start = new Date('1970-01-01T' + startTime + 'Z');
+            var end = new Date('1970-01-01T' + endTime + 'Z');
+            var diff = (end - start) / 3600000; // Difference in hours
+
+            var price = 0;
+            if (transport == 'motorcycle') {
+                if (parkingType == 'vip') {
+                    price = diff <= 2 ? 2 : 4;
+                } else { // basic
+                    price = diff <= 2 ? 2 : 4;
+                }
+            } else if (transport == 'car') {
+                if (parkingType == 'vip') {
+                    price = diff <= 2 ? 4 : 6;
+                } else { // basic
+                    price = diff <= 2 ? 2 : 4;
+                }
+            }
+
+            // Show success popup with calculated price
+            document.getElementById('popup-message').innerText = 'Form submitted successfully! Price: RM' + price;
+            document.getElementById('popup').style.display = 'block';
+        });
+
+        document.getElementById('closeButton').addEventListener('click', function() {
+            document.getElementById('popup').style.display = 'none';
+            window.location.href = 'index.php';
+        });
+
+        document.querySelector('input[type="reset"]').addEventListener('click', function() {
+            document.getElementById('parking').value = 'motorcycle';
+            document.getElementById('parking-type').value = 'basic';
+        });
+    </script>
+</body>
+</html>

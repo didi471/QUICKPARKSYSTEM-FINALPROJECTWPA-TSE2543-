@@ -1,0 +1,73 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9e2576;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #f1eaed;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 350px;
+            text-align: center;
+        }
+        .parking-lot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .parking-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .parking-spot {
+            width: 40px;
+            height: 80px;
+            border: 2px dashed #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .parking-spot.selected {
+            border-color: #00bfa5;
+            background-color: #e0f7fa;
+        }
+        .parking-spot.occupied {
+            border-color: red;
+            background-color: #ffebee;
+            cursor: not-allowed;
+        }
+        .car {
+            width: 30px;
+            height: 60px;
+            background-color: #000;
+            border-radius: 5px;
+        }
+        .entry-exit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .arrow {
+            margin: 5px 0;
+        }
+        .confirm-button {
+            background-color: #6d0846;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }

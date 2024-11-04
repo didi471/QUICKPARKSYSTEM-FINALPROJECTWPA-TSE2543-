@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    
+    <style>
+        body {
+            background-color: #9e2576;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .payment-container {
+            background-color: #420c3b;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        .payment-container h1 {
+            color: whitesmoke;
+        }
+        .payment-option {
+            background-color: #cc6e9d;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .payment-option input {
+            margin-right: 10px;
+        }
+        .card-details {
+            background-color: #d480b1;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .card-details input, .card-details select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensures padding and border are included in the total width */
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #e0087f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #c73f8e;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h1>Payment Method</h1>
+        <div class="payment-option">
+            <input type="radio" name="payment-method" id="paypal">
+            <label for="paypal">Touch n Go</label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" name="payment-method" id="card" checked>
+            <label for="card">Debit/credit card</label>
+            <div class="card-details">
+                <select>
+                    <option value="">Select your bank</option>
+                    <option value="bank1">Maybank</option>
+                    <option value="bank2">CIMB</option>
+                    <option value="bank3">Affin Bank</option>
+                    <option value="bank4">Alliance Bank</option>
+                    <option value="bank5">AmBank</option>
+                    <option value="bank6">Hong Leong Bank</option>
+                    <option value="bank7">Public Bank</option>
+                    <option value="bank8">RHB Bank</option>
+                </select>
+                <input type="text" placeholder="Name" value="">
+                <input type="text" placeholder="Card number" value="">
+            </div>
+        </div>
+        <form action='complete.html' method='post'>
+            <button type='submit'>Finish and Pay</button>
+        </form>
+    </div>
+</body>
+</html>
